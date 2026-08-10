@@ -33,11 +33,24 @@ and bounds that are easy to get subtly wrong by reasoning alone. Each enumerates
 the small cases exhaustively and compares against the answer the written
 solution claims, so a wrong claim fails loudly instead of looking tidy.
 
-## Why this repository is private
+## On publishing these
 
-It holds worked solutions to a competition paper. The problem statements are not
-reproduced here — only a one-line restatement of each input and output contract —
-so this is my own work rather than a copy of theirs. But publishing solutions to
-a competition is the organiser's call, not mine, and nothing is gained by getting
-that wrong. It stays private unless the BIO's own rules on publishing solutions
-are checked first and clearly permit it.
+These are worked solutions to a competition paper, so the question of whether
+they should be public is worth answering rather than assuming.
+
+The BIO's [copyright notice](https://www.olympiad.org.uk/disclaimer.html) covers
+its own pages and problems: copies may be made freely by people involved in the
+olympiad provided nothing is changed and the notice travels with them, and
+distribution for profit is forbidden without written permission. It says nothing
+restricting a competitor from publishing their own solutions.
+
+Three things follow, and all three hold here. **The problem statements are not
+reproduced** — each program carries a one-line restatement of its own input and
+output contract and nothing more, so none of the BIO's text is republished. **The
+code is my own work**, not a copy of an official solution. And **this is not
+distribution for profit.**
+
+The BIO publishes past papers and mark schemes itself, and unofficial solutions
+to round-one papers have been posted publicly by competitors for years, so
+nothing here is unusual. If the BIO would nonetheless rather this were not
+public, I will take it down on request.
