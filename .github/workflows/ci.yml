@@ -1,0 +1,65 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  # The three brute-force checkers, which are the point of the repository: each
+  # enumerates the small cases and compares against what the solution claims.
+  # `q3_search.py` is deliberately absent -- it is a search, not a check, and
+  # takes minutes.
+  checkers:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        # 3.9 as well as 3.13, because the README claims "Python 3 only, no
+        # dependencies" and nothing had ever tested that on an old interpreter.
+        python-version: ["3.9", "3.13"]
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python q1_check.py
+      - run: python q2_check.py
+      - run: python q3_check.py
+
+  # The a-part programs read stdin and write stdout; this only proves they run
+  # and emit something, which is a smoke test and is labelled as one.
+  programs-start:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+      - name: Each q*(a) program runs and writes to stdout
+        run: |
+          set -e
+          out=$(echo 2025 | python q1_palindromic_sums.py)
+          test -n "$out" && echo "q1 -> $out"
+
+  # The gitleaks binary directly rather than gitleaks-action, and the whole
+  # history rather than a diff. The action scans only the range
+  # <before>^..<after> that a push touched, so a secret committed earlier and
+  # never edited again is never looked at; and on a repository's first push the
+  # parent of the root commit does not exist, so it fails outright.
+  gitleaks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      GITLEAKS_VERSION: "8.30.1"
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: Install gitleaks
+        run: |
+          curl -sSfL "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz" \
+            | sudo tar -xz -C /usr/local/bin gitleaks
+          gitleaks version
+      - run: gitleaks detect --source . --redact --exit-code 1 --log-opts=--all
