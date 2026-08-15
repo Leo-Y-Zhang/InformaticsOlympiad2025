@@ -9,7 +9,7 @@ were right rather than merely plausible.
 | 1(a) | `q1_palindromic_sums.py` | Minimal-length palindromic sum for `n`, ties broken by lowest then highest palindrome used |
 | 2(a) | `q2_safe_haven.py` | Question 2, part (a) |
 | 3(a) | `q3_short_fuse.py` | Question 3, part (a) |
-| 1(b), (c) | `q1_written.py` | Helper used to derive the written answers |
+| 1(b), (c) | `q1_written.py`, `q1_check.py` | Helper plus an independent brute-force check |
 | 2(b)–(d) | `q2_written.py`, `q2_check.py` | Helper plus an independent brute-force check |
 | 3(b), (c) | `q3_written.py`, `q3_search.py`, `q3_check.py` | Search plus an independent brute-force check |
 
@@ -28,10 +28,23 @@ each `q*(a)` program are placeholders — fill them in before submitting anythin
 
 ## Checkers
 
-`q2_check.py` and `q3_check.py` exist because the written parts ask for counts
-and bounds that are easy to get subtly wrong by reasoning alone. Each enumerates
-the small cases exhaustively and compares against the answer the written
-solution claims, so a wrong claim fails loudly instead of looking tidy.
+`q1_check.py`, `q2_check.py` and `q3_check.py` exist because the written parts
+ask for counts and bounds that are easy to get subtly wrong by reasoning alone.
+Each enumerates the small cases exhaustively and compares against the answer the
+written solution claims, so a wrong claim fails loudly instead of looking tidy.
+
+`q1_check.py` is the newest. `solve` is clever — it scans upwards and returns the
+first hit, which is only correct if that scan order happens to encode the
+tie-break the paper asks for. The checker enumerates *every* minimal-length
+representation and applies the tie-break directly. Over `n = 1..5000` the two
+agree everywhere, and 2778 of those values have more than one minimal
+representation, so the tie-break is doing real work rather than being trivially
+satisfied.
+
+It runs to 5000 rather than a few hundred, for a measured reason: below about 450
+only nine values need three palindromes at all, so a short range leaves the
+three-palindrome branch nearly untouched. Reversing that branch's search order
+passes at 400 and fails at 1031.
 
 ## On publishing these
 
