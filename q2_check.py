@@ -37,6 +37,7 @@ def check_setup():
                     bad += 1
                     print("  MISMATCH", n, r, g)
     print("  set-up: modular vs literal simulation, mismatches =", bad)
+    assert bad == 0, "%d set-ups disagree with the literal simulation" % bad
 
 
 def check_tiebreak():
