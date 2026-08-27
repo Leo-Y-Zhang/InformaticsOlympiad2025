@@ -23,10 +23,23 @@ matches the sample runs byte for byte and can be diffed against them directly.
 python q1_palindromic_sums.py    # reads from stdin, writes to stdout
 ```
 
-Python 3 only, no dependencies, no build step. `NAME` and `SCHOOL` at the top of
-each `q*(a)` program are placeholders — fill them in before submitting anything.
+Python 3.9 or newer, no dependencies, no build step. CI runs the checkers on
+3.9 and 3.13 so that floor is tested rather than assumed. `NAME` and `SCHOOL` at
+the top of each `q*(a)` program are placeholders — fill them in before
+submitting anything.
 
 ## Checkers
+
+This is the test suite, and it is the whole test suite:
+
+```bash
+python q1_check.py && python q2_check.py && python q3_check.py
+```
+
+About four seconds, no arguments, exit 0 when everything agrees. It is exactly
+what CI runs, alongside a check that each `q*(a)` program still reproduces its
+sample run byte for byte. `q3_search.py` is deliberately not in there: it is a
+search rather than a check and takes minutes.
 
 `q1_check.py`, `q2_check.py` and `q3_check.py` exist because the written parts
 ask for counts and bounds that are easy to get subtly wrong by reasoning alone.

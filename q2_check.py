@@ -30,13 +30,28 @@ def naive_setup(n, r, g):
 
 def check_setup():
     bad = 0
+    cases = 0
     for n in range(1, 8):
         for r in range(1, 26):
             for g in range(1, 26):
+                cases += 1
                 if setup(n, r, g) != naive_setup(n, r, g):
                     bad += 1
                     print("  MISMATCH", n, r, g)
-    print("  set-up: modular vs literal simulation, mismatches =", bad)
+    # The 4x4 board again with r and g up to 49. WRITTEN_ANSWERS.md said this
+    # range was covered and it was not: the sweep in q2_written.py that goes to
+    # 50 only asks whether the board came out chequered, and never calls
+    # naive_setup. It is worth having, because a count of 49 on 16 squares
+    # wraps the cyclic walk three times over, so an off-by-one in `setup`'s
+    # modular shortcut has to survive more wraps than r <= 25 ever forces.
+    for r in range(1, 50):
+        for g in range(1, 50):
+            cases += 1
+            if setup(4, r, g) != naive_setup(4, r, g):
+                bad += 1
+                print("  MISMATCH", 4, r, g)
+    print("  set-up: modular vs literal simulation over", cases,
+          "cases, mismatches =", bad)
     assert bad == 0, "%d set-ups disagree with the literal simulation" % bad
 
 

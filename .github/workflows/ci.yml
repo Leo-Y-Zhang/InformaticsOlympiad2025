@@ -56,6 +56,11 @@ jobs:
             echo "$1: $2 -> $got"
           }
           sample q1_palindromic_sums.py "1031" "1 101 929"
+          # The other two worked examples WRITTEN_ANSWERS.md says are
+          # reproduced. 12321 is already a palindrome so it takes the one-term
+          # branch, 9610 needs two; neither was checked anywhere before.
+          sample q1_palindromic_sums.py "12321" "12321"
+          sample q1_palindromic_sums.py "9610" "161 9449"
           sample q2_safe_haven.py "3 5 5" "2 1"
           sample q3_short_fuse.py "2 1 1" "7"
 

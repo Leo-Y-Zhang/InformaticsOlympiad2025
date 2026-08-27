@@ -172,10 +172,14 @@ at equal or tiny burn times: (1,1) gives only 7 and (1,1,1) only 16.
 
 ## Verification performed
 
-* Q1: every one of 5 003 sampled inputs (1–2000 plus 3 000 random plus the
-  boundaries) checked for correct total, all terms palindromic, and provably
-  minimal length. Stated examples reproduced: 12321 → `12321`,
-  9610 → `161 9449`, 1031 → `1 101 929`.
+* Q1: `q1_check.py` takes every n from 1 to 5000 — exhaustive, not sampled —
+  and compares the solver against an independent enumeration of *every*
+  minimal-length representation, checking correct total, all terms
+  palindromic, ascending order, minimal length, and then that the answer is
+  the exact representation the paper's tie-break selects. 2778 of the 5000
+  admit more than one minimal representation, so the tie-break is what most of
+  the range is testing. Stated examples reproduced: 12321 → `12321`,
+  9610 → `161 9449`, 1031 → `1 101 929`; CI runs all three on every push.
 * Q2: the modular set-up cross-checked against a literal square-by-square
   simulation for every (n ≤ 7, r ≤ 25, g ≤ 25) and every (n = 4, r, g < 50) —
   no mismatches. Every game checked to terminate leaving only single-coloured
