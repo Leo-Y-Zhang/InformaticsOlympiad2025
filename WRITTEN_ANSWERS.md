@@ -134,7 +134,7 @@ reachable state S of {0} together with the set of future event offsets from S,
 and that offset set memoises on the state — which makes the search tiny. Times
 are kept as exact integers scaled by 2^(f+2) (at most f halvings can occur).
 
-Runtime for the hardest four-fuse inputs is under 0.01 s.
+Runtime for the hardest four-fuse inputs is a few hundredths of a second.
 
 ### 3(b) — periods measurable with fuses of burn time 1 and 2
 
@@ -195,4 +195,5 @@ at equal or tiny burn times: (1,1) gives only 7 and (1,1,1) only 16.
   asserted.
 * Q3: the memoised solver cross-checked against a completely independent
   exact-`Fraction` brute force over 17 inputs including four-fuse cases —
-  identical period *values*, not just counts.
+  identical period *values*, not just counts. The same brute force confirms
+  the nine periods of 3(b) and that each tuple quoted in 3(c) reaches 17 or 163.
