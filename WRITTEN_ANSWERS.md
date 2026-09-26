@@ -62,9 +62,10 @@ Full breakdown of 1…1 000 000:
 | 4 or more | 0 |
 | total | 1 000 000 |
 
-Computed two independent ways (bitmask convolution of the palindrome set, and
-explicit set arithmetic) — they agree, and the "4 or more" row confirms the
-paper's claim that three palindromes always suffice.
+Computed two independent ways (bitmask convolution of the palindrome set in
+`q1_written.py`, and explicit set arithmetic in `q1_check.py`) — they agree, and
+the "4 or more" row confirms the paper's claim that three palindromes always
+suffice.
 
 ---
 
@@ -180,6 +181,9 @@ at equal or tiny burn times: (1,1) gives only 7 and (1,1,1) only 16.
   admit more than one minimal representation, so the tie-break is what most of
   the range is testing. Stated examples reproduced: 12321 → `12321`,
   9610 → `161 9449`, 1031 → `1 101 929`; CI runs all three on every push.
+  It also recounts 1(c) by set arithmetic over palindromes found by testing
+  every n, confirms the five sums for 54 in 1(b), and checks that every answer
+  for n = 998 000 … 1 000 000 is a valid sum of minimal length.
 * Q2: the modular set-up cross-checked against a literal square-by-square
   simulation for every (n ≤ 7, r ≤ 25, g ≤ 25) and every (n = 4, r, g < 50) —
   no mismatches. Every game checked to terminate leaving only single-coloured
