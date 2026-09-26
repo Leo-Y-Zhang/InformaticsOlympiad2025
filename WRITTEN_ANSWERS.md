@@ -188,7 +188,11 @@ at equal or tiny burn times: (1,1) gives only 7 and (1,1,1) only 16.
   simulation for every (n ≤ 7, r ≤ 25, g ≤ 25) and every (n = 4, r, g < 50) —
   no mismatches. Every game checked to terminate leaving only single-coloured
   havens. The paper's worked tie-break example (havens 1R/0G, 2R/3G, 4R/3G,
-  9R/4G → pick 4R/3G) reproduced.
+  9R/4G → pick 4R/3G) reproduced. The amended strategy of 2(d) is played out
+  over the same 90 inputs: every move legal, every safe-haven-first move
+  really adds a safe haven for the mover, every game ending in single-coloured
+  havens. The answers to 2(b), 2(c) (from the literal simulation) and 2(d) are
+  asserted.
 * Q3: the memoised solver cross-checked against a completely independent
   exact-`Fraction` brute force over 17 inputs including four-fuse cases —
   identical period *values*, not just counts.
