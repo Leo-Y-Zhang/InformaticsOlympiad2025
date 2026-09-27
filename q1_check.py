@@ -41,6 +41,56 @@ def every_minimal(n, pals, pset):
     return sorted(triples)
 
 
+def check_written():
+    """The numbers WRITTEN_ANSWERS.md commits to for 1(b) and 1(c).
+
+    1(c) is recounted here by plain set arithmetic -- every palindrome, every
+    sum of two, and whatever is left -- rather than by q1_written.py's bitmask
+    convolution, so the two methods the written answer says agree are both
+    committed and one of them runs in CI. The same sets then give the minimal
+    length of any n directly, which checks `solve` at the top of the input
+    range, where the exhaustive comparison above cannot reach.
+    """
+    top = 1000000
+
+    # 1(b): all five minimal sums for 54, and the one the program picks
+    pals54 = palindromes_upto(54)
+    sums54 = every_minimal(54, pals54, set(pals54))
+    assert sums54 == [(1, 9, 44), (2, 8, 44), (3, 7, 44), (4, 6, 44), (5, 5, 44)], sums54
+    assert solve(54) == [1, 9, 44], solve(54)
+
+    # 1(c): 1998 palindromes, 731054 need exactly two, 266948 exactly three.
+    # The palindromes are found by testing every n, not by the solver's
+    # mirroring, so a gap in palindromes_upto cannot hide in both counts.
+    pals = [n for n in range(1, top + 1) if str(n) == str(n)[::-1]]
+    one = set(pals)
+    two = set()
+    for i, a in enumerate(pals):
+        for b in pals[i:]:
+            if a + b > top:
+                break
+            two.add(a + b)
+    two -= one
+    three = [n for n in range(1, top + 1) if n not in one and n not in two]
+    four = [n for n in three if not any((n - p) in two for p in pals if p < n)]
+    assert (len(one), len(two), len(three), len(four)) == (1998, 731054, 266948, 0), (
+        len(one), len(two), len(three), len(four))
+    print(f"  1(c) by set arithmetic: {len(one)} palindromes, {len(two)} need two, "
+          f"{len(three)} need three, {len(four)} need more")
+
+    # the top of the range: 1..1000000 is the paper's bound, and nothing above
+    # checked `solve` near it. Each answer must be a valid sum of minimal length.
+    def need(n):
+        return 1 if n in one else 2 if n in two else 3
+
+    for n in range(top - 2000, top + 1):
+        got = solve(n)
+        assert sum(got) == n and all(is_pal(x) for x in got), (n, got)
+        assert list(got) == sorted(got), (n, got)
+        assert len(got) == need(n), (n, got, need(n))
+    print(f"  n = {top - 2000}..{top}: every answer valid and of minimal length")
+
+
 def main() -> int:
     pals = palindromes_upto(LIMIT)
     pset = set(pals)
@@ -83,6 +133,7 @@ def main() -> int:
     print(f"  longest sum needed over the range: "
           f"{max(len(solve(n)) for n in range(1, LIMIT + 1))} palindromes")
     print("all cases agree exactly (the representation, not just its length)")
+    check_written()
     return 0
 
 

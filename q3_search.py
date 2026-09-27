@@ -64,7 +64,7 @@ def main():
 
     print()
     print("THREE FUSES")
-    for lim in (20, 30, 40, 50, 60):
+    for lim in (20, 30, 40, 50, 60, 100):
         t0 = time.perf_counter()
         b, a = sweep3(lim)
         print("  sweep <=%4d : max %4d at %-16s (%.1fs)" % (lim, b, a, time.perf_counter() - t0))

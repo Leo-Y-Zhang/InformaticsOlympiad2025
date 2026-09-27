@@ -36,7 +36,7 @@ This is the test suite, and it is the whole test suite:
 python q1_check.py && python q2_check.py && python q3_check.py
 ```
 
-About four seconds, no arguments, exit 0 when everything agrees. It is exactly
+About six seconds, no arguments, exit 0 when everything agrees. It is exactly
 what CI runs, alongside a check that each `q*(a)` program still reproduces its
 sample run byte for byte. `q3_search.py` is deliberately not in there: it is a
 search rather than a check and takes minutes.

@@ -62,9 +62,10 @@ Full breakdown of 1…1 000 000:
 | 4 or more | 0 |
 | total | 1 000 000 |
 
-Computed two independent ways (bitmask convolution of the palindrome set, and
-explicit set arithmetic) — they agree, and the "4 or more" row confirms the
-paper's claim that three palindromes always suffice.
+Computed two independent ways (bitmask convolution of the palindrome set in
+`q1_written.py`, and explicit set arithmetic in `q1_check.py`) — they agree, and
+the "4 or more" row confirms the paper's claim that three palindromes always
+suffice.
 
 ---
 
@@ -133,7 +134,7 @@ reachable state S of {0} together with the set of future event offsets from S,
 and that offset set memoises on the state — which makes the search tiny. Times
 are kept as exact integers scaled by 2^(f+2) (at most f halvings can occur).
 
-Runtime for the hardest four-fuse inputs is under 0.01 s.
+Runtime for the hardest four-fuse inputs is a few hundredths of a second.
 
 ### 3(b) — periods measurable with fuses of burn time 1 and 2
 
@@ -180,11 +181,19 @@ at equal or tiny burn times: (1,1) gives only 7 and (1,1,1) only 16.
   admit more than one minimal representation, so the tie-break is what most of
   the range is testing. Stated examples reproduced: 12321 → `12321`,
   9610 → `161 9449`, 1031 → `1 101 929`; CI runs all three on every push.
+  It also recounts 1(c) by set arithmetic over palindromes found by testing
+  every n, confirms the five sums for 54 in 1(b), and checks that every answer
+  for n = 998 000 … 1 000 000 is a valid sum of minimal length.
 * Q2: the modular set-up cross-checked against a literal square-by-square
   simulation for every (n ≤ 7, r ≤ 25, g ≤ 25) and every (n = 4, r, g < 50) —
   no mismatches. Every game checked to terminate leaving only single-coloured
   havens. The paper's worked tie-break example (havens 1R/0G, 2R/3G, 4R/3G,
-  9R/4G → pick 4R/3G) reproduced.
+  9R/4G → pick 4R/3G) reproduced. The amended strategy of 2(d) is played out
+  over the same 90 inputs: every move legal, every safe-haven-first move
+  really adds a safe haven for the mover, every game ending in single-coloured
+  havens. The answers to 2(b), 2(c) (from the literal simulation) and 2(d) are
+  asserted.
 * Q3: the memoised solver cross-checked against a completely independent
   exact-`Fraction` brute force over 17 inputs including four-fuse cases —
-  identical period *values*, not just counts.
+  identical period *values*, not just counts. The same brute force confirms
+  the nine periods of 3(b) and that each tuple quoted in 3(c) reaches 17 or 163.
