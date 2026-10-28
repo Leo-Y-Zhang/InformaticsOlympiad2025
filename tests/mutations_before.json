@@ -1,0 +1,472 @@
+[
+  {
+    "id": 1,
+    "module": "q1_palindromic_sums",
+    "line": 19,
+    "original": "return s == s[::-1]",
+    "replacement": "return s != s[::-1]",
+    "gate": "killed",
+    "pytest": "not run",
+    "outcome": "killed"
+  },
+  {
+    "id": 2,
+    "module": "q1_palindromic_sums",
+    "line": 30,
+    "original": "odd > limit and even > limit",
+    "replacement": "odd > limit or even > limit",
+    "gate": "killed",
+    "pytest": "not run",
+    "outcome": "killed"
+  },
+  {
+    "id": 3,
+    "module": "q1_palindromic_sums",
+    "line": 32,
+    "original": "if odd <= limit:",
+    "replacement": "if odd < limit:",
+    "gate": "pass",
+    "pytest": "not run",
+    "outcome": "survived"
+  },
+  {
+    "id": 4,
+    "module": "q1_palindromic_sums",
+    "line": 34,
+    "original": "if even <= limit:",
+    "replacement": "if even < limit:",
+    "gate": "pass",
+    "pytest": "not run",
+    "outcome": "survived"
+  },
+  {
+    "id": 5,
+    "module": "q1_palindromic_sums",
+    "line": 54,
+    "original": "for a in pals:",
+    "replacement": "for a in reversed(pals):",
+    "gate": "killed",
+    "pytest": "not run",
+    "outcome": "killed"
+  },
+  {
+    "id": 6,
+    "module": "q1_palindromic_sums",
+    "line": 56,
+    "original": "rest - 1) - 1",
+    "replacement": "rest - 1) - 2",
+    "gate": "killed",
+    "pytest": "not run",
+    "outcome": "killed"
+  },
+  {
+    "id": 7,
+    "module": "q1_check",
+    "line": 107,
+    "original": "assert all(is_pal(x) for x in got)",
+    "replacement": "assert True",
+    "gate": "pass",
+    "pytest": "not run",
+    "outcome": "survived"
+  },
+  {
+    "id": 8,
+    "module": "q1_check",
+    "line": 108,
+    "original": "assert sum(got) == n, (n, got)",
+    "replacement": "assert True, (n, got)",
+    "gate": "pass",
+    "pytest": "not run",
+    "outcome": "survived"
+  },
+  {
+    "id": 9,
+    "module": "q1_check",
+    "line": 109,
+    "original": "assert list(got) == sorted(got), (n, got)\n\n        options",
+    "replacement": "assert True, (n, got)\n\n        options",
+    "gate": "pass",
+    "pytest": "not run",
+    "outcome": "survived"
+  },
+  {
+    "id": 10,
+    "module": "q1_check",
+    "line": 113,
+    "original": "assert len(got) == len(options[0])",
+    "replacement": "assert True",
+    "gate": "pass",
+    "pytest": "not run",
+    "outcome": "survived"
+  },
+  {
+    "id": 11,
+    "module": "q1_check",
+    "line": 124,
+    "original": "if tuple(got) != want:",
+    "replacement": "if False:",
+    "gate": "pass",
+    "pytest": "not run",
+    "outcome": "survived"
+  },
+  {
+    "id": 12,
+    "module": "q1_check",
+    "line": 37,
+    "original": "if c < b:",
+    "replacement": "if c <= b:",
+    "gate": "pass",
+    "pytest": "not run",
+    "outcome": "survived"
+  },
+  {
+    "id": 13,
+    "module": "q1_written",
+    "line": 26,
+    "original": "if c >= b and c in pset:",
+    "replacement": "if c > b and c in pset:",
+    "gate": "pass",
+    "pytest": "not run",
+    "outcome": "survived"
+  },
+  {
+    "id": 14,
+    "module": "q1_written",
+    "line": 26,
+    "original": "if c >= b and c in pset:",
+    "replacement": "if c >= b or c in pset:",
+    "gate": "pass",
+    "pytest": "not run",
+    "outcome": "survived"
+  },
+  {
+    "id": 15,
+    "module": "q1_written",
+    "line": 20,
+    "original": "if pairs:\n        return pairs",
+    "replacement": "if pairs:\n        return pairs[:1]",
+    "gate": "pass",
+    "pytest": "not run",
+    "outcome": "survived"
+  },
+  {
+    "id": 16,
+    "module": "q1_written",
+    "line": 18,
+    "original": "return [(n,)]",
+    "replacement": "return []",
+    "gate": "pass",
+    "pytest": "not run",
+    "outcome": "survived"
+  },
+  {
+    "id": 17,
+    "module": "q2_safe_haven",
+    "line": 26,
+    "original": "if col < n - 1:",
+    "replacement": "if col < n - 2:",
+    "gate": "killed",
+    "pytest": "not run",
+    "outcome": "killed"
+  },
+  {
+    "id": 18,
+    "module": "q2_safe_haven",
+    "line": 49,
+    "original": "empties[(step - 1) % len(empties)]",
+    "replacement": "empties[step % len(empties)]",
+    "gate": "killed",
+    "pytest": "not run",
+    "outcome": "killed"
+  },
+  {
+    "id": 19,
+    "module": "q2_safe_haven",
+    "line": 81,
+    "original": "if all(board[q] == player for q in comp):",
+    "replacement": "if any(board[q] == player for q in comp):",
+    "gate": "killed",
+    "pytest": "not run",
+    "outcome": "killed"
+  },
+  {
+    "id": 20,
+    "module": "q2_safe_haven",
+    "line": 93,
+    "original": "if mine == 0 or theirs == 0:",
+    "replacement": "if mine == 0 and theirs == 0:",
+    "gate": "killed",
+    "pytest": "not run",
+    "outcome": "killed"
+  },
+  {
+    "id": 21,
+    "module": "q2_safe_haven",
+    "line": 95,
+    "original": "key = (-theirs, mine, comp[-1])",
+    "replacement": "key = (theirs, mine, comp[-1])",
+    "gate": "pass",
+    "pytest": "not run",
+    "outcome": "survived"
+  },
+  {
+    "id": 22,
+    "module": "q2_safe_haven",
+    "line": 95,
+    "original": "key = (-theirs, mine, comp[-1])",
+    "replacement": "key = (-theirs, -mine, comp[-1])",
+    "gate": "pass",
+    "pytest": "not run",
+    "outcome": "survived"
+  },
+  {
+    "id": 23,
+    "module": "q2_safe_haven",
+    "line": 95,
+    "original": "key = (-theirs, mine, comp[-1])",
+    "replacement": "key = (-theirs, mine, -comp[-1])",
+    "gate": "pass",
+    "pytest": "not run",
+    "outcome": "survived"
+  },
+  {
+    "id": 24,
+    "module": "q2_safe_haven",
+    "line": 105,
+    "original": "return (q, min(targets))",
+    "replacement": "return (q, max(targets))",
+    "gate": "killed",
+    "pytest": "not run",
+    "outcome": "killed"
+  },
+  {
+    "id": 25,
+    "module": "q2_safe_haven",
+    "line": 101,
+    "original": "for q in best_comp:",
+    "replacement": "for q in reversed(best_comp):",
+    "gate": "killed",
+    "pytest": "not run",
+    "outcome": "killed"
+  },
+  {
+    "id": 26,
+    "module": "q2_safe_haven",
+    "line": 120,
+    "original": "count_safe(board, nb, N, player) > base",
+    "replacement": "count_safe(board, nb, N, player) >= base",
+    "gate": "killed",
+    "pytest": "not run",
+    "outcome": "killed"
+  },
+  {
+    "id": 27,
+    "module": "q2_safe_haven",
+    "line": 121,
+    "original": "board[q], board[t] = player, opp",
+    "replacement": "board[q], board[t] = EMPTY, player",
+    "gate": "killed",
+    "pytest": "not run",
+    "outcome": "killed"
+  },
+  {
+    "id": 28,
+    "module": "q2_check",
+    "line": 86,
+    "original": "assert board[q] == player and board[t] == OTHER[player]\n",
+    "replacement": "assert True\n",
+    "gate": "pass",
+    "pytest": "not run",
+    "outcome": "survived"
+  },
+  {
+    "id": 29,
+    "module": "q2_check",
+    "line": 87,
+    "original": "assert t in nb[q]\n",
+    "replacement": "assert True\n",
+    "gate": "pass",
+    "pytest": "not run",
+    "outcome": "survived"
+  },
+  {
+    "id": 30,
+    "module": "q2_check",
+    "line": 95,
+    "original": "assert len({board[x] for x in comp}) == 1, (n, r, g, comp)",
+    "replacement": "assert True, (n, r, g, comp)",
+    "gate": "pass",
+    "pytest": "not run",
+    "outcome": "survived"
+  },
+  {
+    "id": 31,
+    "module": "q2_check",
+    "line": 129,
+    "original": "assert count_safe(board, nb, N, player) > before, (n, r, g, mv)",
+    "replacement": "assert True, (n, r, g, mv)",
+    "gate": "pass",
+    "pytest": "not run",
+    "outcome": "survived"
+  },
+  {
+    "id": 32,
+    "module": "q2_check",
+    "line": 56,
+    "original": "assert bad == 0,",
+    "replacement": "assert True,",
+    "gate": "pass",
+    "pytest": "not run",
+    "outcome": "survived"
+  },
+  {
+    "id": 33,
+    "module": "q3_short_fuse",
+    "line": 45,
+    "original": "opts.append((0, 1, 2))",
+    "replacement": "opts.append((1, 2))",
+    "gate": "killed",
+    "pytest": "not run",
+    "outcome": "killed"
+  },
+  {
+    "id": 34,
+    "module": "q3_short_fuse",
+    "line": 47,
+    "original": "opts.append((1, 2))",
+    "replacement": "opts.append((1,))",
+    "gate": "killed",
+    "pytest": "not run",
+    "outcome": "killed"
+  },
+  {
+    "id": 35,
+    "module": "q3_short_fuse",
+    "line": 56,
+    "original": "t < dt:",
+    "replacement": "t > dt:",
+    "gate": "killed",
+    "pytest": "not run",
+    "outcome": "killed"
+  },
+  {
+    "id": 36,
+    "module": "q3_short_fuse",
+    "line": 78,
+    "original": "out.add(dt + x)",
+    "replacement": "out.add(dt - x)",
+    "gate": "killed",
+    "pytest": "not run",
+    "outcome": "killed"
+  },
+  {
+    "id": 37,
+    "module": "q3_short_fuse",
+    "line": 82,
+    "original": "periods = {0}",
+    "replacement": "periods = set()",
+    "gate": "killed",
+    "pytest": "not run",
+    "outcome": "killed"
+  },
+  {
+    "id": 38,
+    "module": "q3_short_fuse",
+    "line": 100,
+    "original": "return sorted(Fraction(p, scale) for p in periods)",
+    "replacement": "return sorted(Fraction(p, scale + 1) for p in periods)",
+    "gate": "pass",
+    "pytest": "not run",
+    "outcome": "survived"
+  },
+  {
+    "id": 39,
+    "module": "q3_short_fuse",
+    "line": 100,
+    "original": "return sorted(Fraction(p, scale) for p in periods)",
+    "replacement": "return sorted(Fraction(p, scale) for p in periods)[1:]",
+    "gate": "pass",
+    "pytest": "not run",
+    "outcome": "survived"
+  },
+  {
+    "id": 40,
+    "module": "q3_short_fuse",
+    "line": 105,
+    "original": "return len(periods)",
+    "replacement": "return len(periods) + 1",
+    "gate": "killed",
+    "pytest": "not run",
+    "outcome": "killed"
+  },
+  {
+    "id": 41,
+    "module": "q3_check",
+    "line": 87,
+    "original": "assert a == b,",
+    "replacement": "assert len(a) == len(b),",
+    "gate": "pass",
+    "pytest": "not run",
+    "outcome": "survived"
+  },
+  {
+    "id": 42,
+    "module": "q3_check",
+    "line": 70,
+    "original": "assert sorted(brute([1, 2])) ==",
+    "replacement": "assert True or sorted(brute([1, 2])) ==",
+    "gate": "pass",
+    "pytest": "not run",
+    "outcome": "survived"
+  },
+  {
+    "id": 43,
+    "module": "q3_check",
+    "line": 39,
+    "original": "periods.add(now2 - e)",
+    "replacement": "periods.add(now2 + e)",
+    "gate": "killed",
+    "pytest": "not run",
+    "outcome": "killed"
+  },
+  {
+    "id": 44,
+    "module": "q3_written",
+    "line": 10,
+    "original": "if x.denominator == 1",
+    "replacement": "if x.denominator != 1",
+    "gate": "pass",
+    "pytest": "not run",
+    "outcome": "survived"
+  },
+  {
+    "id": 45,
+    "module": "q3_written",
+    "line": 10,
+    "original": "\"%d/%d\" % (x.numerator, x.denominator)",
+    "replacement": "\"%d/%d\" % (x.denominator, x.numerator)",
+    "gate": "pass",
+    "pytest": "not run",
+    "outcome": "survived"
+  },
+  {
+    "id": 46,
+    "module": "q3_search",
+    "line": 21,
+    "original": "range(1, limit + 1)",
+    "replacement": "range(1, limit)",
+    "gate": "pass",
+    "pytest": "not run",
+    "outcome": "survived"
+  },
+  {
+    "id": 47,
+    "module": "q3_search",
+    "line": 35,
+    "original": "range(b, limit + 1)",
+    "replacement": "range(b, limit)",
+    "gate": "pass",
+    "pytest": "not run",
+    "outcome": "survived"
+  }
+]
