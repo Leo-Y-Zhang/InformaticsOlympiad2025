@@ -16,7 +16,7 @@ jobs:
   # `q3_search.py` is deliberately absent -- it is a search, not a check, and
   # takes minutes.
   checkers:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     strategy:
       fail-fast: false
@@ -39,7 +39,7 @@ jobs:
   # each one "sample run reproduced", so that is what is checked here: the exact
   # stdout for the sample input, not merely that something was printed.
   programs-start:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
@@ -72,7 +72,7 @@ jobs:
   # never edited again is never looked at; and on a repository's first push the
   # parent of the root commit does not exist, so it fails outright.
   gitleaks:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     env:
       GITLEAKS_VERSION: "8.30.1"
