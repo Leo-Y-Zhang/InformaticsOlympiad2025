@@ -32,6 +32,8 @@ jobs:
       - run: python q1_check.py
       - run: python q2_check.py
       - run: python q3_check.py
+      - run: pip install pytest==8.4.2
+      - run: pytest -q
 
   # The a-part programs read stdin and write stdout. WRITTEN_ANSWERS.md says of
   # each one "sample run reproduced", so that is what is checked here: the exact
